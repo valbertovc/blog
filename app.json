@@ -21,15 +21,16 @@
       "value": "*.dokku.me"
     }
   },
-
   "healthchecks": {
     "web": [
         {
-            "type":        "startup",
-            "name":        "web check",
+            "type": "startup",
+            "name": "web check",
             "description": "Checking if the app responds to the /health/ endpoint",
-            "path":        "/health/",
-            "attempts": 3
+            "path": "/health/",
+            "port": 8000,
+            "attempts": 3,
+            "initialDelay": 2
         }
     ]
   },
