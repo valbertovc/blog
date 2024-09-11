@@ -1,0 +1,27 @@
+{
+  "name": "Blog",
+  "website": "https://dokku.me/",
+  "repository": "https://github.com/valbertovc/blog",
+  "scripts": {
+    "predeploy": [
+      "dokku postgres:list"
+    ]
+  },
+  "env": {
+    "DJANGO_SETTINGS_MODULE": {
+      "description": "The Django settings module to use",
+      "value": "blog.settings"
+    },
+    "DEBUG": {
+      "description": "Debug mode",
+      "value": "false"
+    },
+    "ALLOWED_HOSTS": {
+      "description": "Hosts allowed to access the application",
+      "value": "*.dokku.me"
+    }
+  },
+  "addons": [
+    "postgresql"
+  ]
+}
