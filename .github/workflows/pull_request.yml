@@ -1,0 +1,24 @@
+name: Check code
+on:
+  pull_request:
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+        with:
+          enable-cache: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+      - name: Install the project
+        run: uv sync --all-extras --dev
+      - name: Check code
+        run: uv run ruff check --output-format=github .
+      - name: Run test suite
+        run: |
+          uv run manage.py test --noinput --parallel
