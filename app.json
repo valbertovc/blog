@@ -1,6 +1,5 @@
 {
   "name": "Blog",
-  "website": "https://dokku.me/",
   "repository": "https://github.com/valbertovc/blog",
   "healthchecks": {
     "web": [
