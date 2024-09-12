@@ -1,0 +1,20 @@
+{
+  "name": "Blog",
+  "repository": "https://github.com/valbertovc/blog",
+  "healthchecks": {
+    "web": [
+        {
+            "type": "startup",
+            "name": "web check",
+            "description": "Checking if the app responds to the /health/ endpoint",
+            "path": "/health/",
+            "port": 8000,
+            "attempts": 3,
+            "initialDelay": 2
+        }
+    ]
+  },
+  "addons": [
+    "postgresql"
+  ]
+}
