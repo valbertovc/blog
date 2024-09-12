@@ -17,11 +17,17 @@ Including another URLconf
 
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path
 from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path(
+        "health/",
+        lambda request: JsonResponse({"status": "ok"}, status=200),
+        name="health_check",
+    ),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
