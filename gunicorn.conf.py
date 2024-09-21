@@ -5,5 +5,5 @@ https://docs.gunicorn.org/en/stable/settings.html
 """
 
 accesslog = "-"
-bind = ":5000"
+bind = ":8000"
 wsgi_app = "blog.wsgi"
