@@ -139,3 +139,8 @@ AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default="minio")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY", default="minio123")
 AWS_DEFAULT_ACL = config("AWS_DEFAULT_ACL", default="private")
 AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL", default="http://localhost:9000")
+
+RABBITMQ_URL = config(
+    "RABBITMQ_URL", default="amqp://rabbitmq:rabbitmq@localhost:5672/"
+)
+CELERY_BROKER_URL = config("CELERY_BROKER_URL", default=RABBITMQ_URL)
