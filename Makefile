@@ -1,4 +1,7 @@
-.PHONY: runserver start-web requirements dokku-deploy dokku-create dokku-start
+.PHONY: start-worker runserver start-web requirements dokku-deploy dokku-create dokku-start
+
+start-worker:
+	celery -A blog worker --loglevel=INFO
 
 runserver:
 	python manage.py runserver
