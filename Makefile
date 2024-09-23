@@ -1,4 +1,7 @@
-.PHONY: start-web requirements dokku-deploy dokku-create dokku-start
+.PHONY: runserver start-web requirements dokku-deploy dokku-create dokku-start
+
+runserver:
+	python manage.py runserver
 
 start-web:
 	python manage.py migrate --noinput
@@ -14,6 +17,7 @@ dokku-deploy:
 dokku-create:
 	docker exec -it dokku dokku apps:create blog||echo "App blog already exists"
 	docker exec -it dokku dokku postgres:create blog-db||echo "Postgres service blog-db already exists"
+	docker exec -it dokku dokku postgres:link blog-db blog||echo "Link already exists"
 
 dokku-start:
 	docker compose up -d dokku
