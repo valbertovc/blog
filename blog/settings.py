@@ -118,8 +118,23 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
+STATICFILES_STORAGE = "blog.storages.StaticStorage"
+STATICFILES_LOCATION = "static"
+STATIC_BUCKET_NAME = config("STATIC_BUCKET_NAME", default="blog-static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Media files (Images, Videos, Documents, etc)
+STORAGES = {
+    "default": {
+        "BACKEND": "blog.storages.MediaStorage",
+    },
+}
+MEDIA_BUCKET_NAME = config("MEDIA_BUCKET_NAME", default="blog-media")
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default="minio")
+AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY", default="minio123")
+AWS_DEFAULT_ACL = config("AWS_DEFAULT_ACL", default="private")
+AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL", default="http://localhost:9000")
