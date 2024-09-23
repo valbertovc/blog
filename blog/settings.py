@@ -118,8 +118,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_STORAGE = "blog.storages.StaticStorage"
-STATICFILES_LOCATION = "static"
 STATIC_BUCKET_NAME = config("STATIC_BUCKET_NAME", default="blog-static")
 
 # Default primary key field type
@@ -131,6 +129,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STORAGES = {
     "default": {
         "BACKEND": "blog.storages.MediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "blog.storages.StaticStorage",
     },
 }
 MEDIA_BUCKET_NAME = config("MEDIA_BUCKET_NAME", default="blog-media")

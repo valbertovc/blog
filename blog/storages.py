@@ -10,10 +10,10 @@ class BaseStorage(S3Storage):
 
 
 class StaticStorage(BaseStorage):
-    bucket_name = settings.MEDIA_BUCKET_NAME
+    bucket_name = settings.STATIC_BUCKET_NAME
     bucket_acl = "public-read"
 
 
 class MediaStorage(BaseStorage):
-    bucket_name = settings.STATIC_BUCKET_NAME
+    bucket_name = settings.MEDIA_BUCKET_NAME
     bucket_acl = "private"
